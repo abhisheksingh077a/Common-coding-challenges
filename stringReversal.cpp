@@ -5,7 +5,7 @@
 void reverseString ( ) {
 
     std :: string name { "" } ;
-    std :: cout <<"\nEnter you name : " ;
+    std :: cout <<"\nEnter a string to reverse : " ;
     std :: getline ( std::cin, name ) ; // read a full line of text into name
     int stringLength { static_cast <int>( name . length () ) } ;
     std :: cout << "\nString length is : " << stringLength << std ::endl ;
