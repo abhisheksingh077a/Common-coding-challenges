@@ -32,3 +32,24 @@ for value in st:
 print("Input: ", ",".join(st))
 print("Output: ", ",".join(odd))
 
+
+
+# Question: 3
+# find the total money in a bank account by using log book entries
+# input D 500,W 300,D 200   D:deposit   W:withdrawl
+# total money is a/c: 400
+
+def bnk_balance(st):
+    st = st.split(",")
+    blnc = 0
+    for item in st:
+        item = item.split(" ")
+        if(item[0] == "D"):
+            blnc = blnc + int(item[1])
+        elif(item[0] == "W"):
+            blnc = blnc - int(item[1])
+    return blnc
+
+if __name__ == "__main__":
+    st = input("Enter the log book in given format: ")
+    print(bnk_balance(st))
