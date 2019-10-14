@@ -53,3 +53,23 @@ def bnk_balance(st):
 if __name__ == "__main__":
     st = input("Enter the log book in given format: ")
     print(bnk_balance(st))
+
+      
+#Question: 4
+# using a generator ouput fibonacci series upto a given number
+# input : 10
+# ouput : 1,1,2,3,5,8
+
+def fibo(limit):
+    a = 0
+    b = 1
+    while(b <= limit):
+        yield b
+        a, b = b, a + b
+        
+num = int(input("Enter an intger to generate the fibonacci series upto the number: "))
+fib = []
+for value in fibo(num):
+    fib.append(str(value))
+    
+print(",".join(fib))
