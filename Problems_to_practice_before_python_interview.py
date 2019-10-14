@@ -73,3 +73,67 @@ for value in fibo(num):
     fib.append(str(value))
     
 print(",".join(fib))
+
+
+#Question 5
+# input : a string which are comma separeted passwords to an account
+# output : list of comma-separated valid passwords
+# criteria :
+#1: atleast 1 lower_case(a-z)
+#2: atleast one number(1-9)
+#3: atleast one upper case(A-Z)
+#4: atleast one [$,#,@]
+#5: length should be between(6, 12)
+#input Abh@i123,abhi234,apple@3&78
+#ouput Abh@i123
+def valid(st):
+    st = st.split(",")
+    pass_list = []
+    for item in st:
+        digit = 0
+        lower = 0
+        upper = 0
+        splstr = 0
+        if(len(item) > 5 and len(item) < 13):
+            for ii in range(len(item)):
+                if str.isdigit(item[ii]):
+                    digit += 1
+                elif str.isalpha(item[ii]):
+                    if(str.islower(item[ii])):
+                        lower += 1
+                    elif(str.isupper(item[ii])):
+                        upper += 1
+                    else:
+                        pass
+                elif item[ii] == "@" or item[ii] == "#" or item[ii] == "$":
+                    splstr += 1
+                else:
+                    pass
+        else:
+            continue
+        
+        if(digit > 0 and lower > 0 and upper > 0 and splstr > 0):
+            pass_list.append(item)
+        else:
+            pass
+    return pass_list
+import re
+def valid_using_re(st):
+    st = st.split(",")
+    pass_list = []
+    for item in st:
+        if len(item) < 6 or len(item) > 12:
+            continue
+        
+        elif re.search("[a-z]", item) != None and re.search("[A-Z]", item) != None and re.search("[@#$]", item) != None and re.search("[0-9]", item) != None:
+            pass_list.append(item)
+        else:
+            pass
+    return pass_list
+
+st = input("enter the passwords as comma-separated values")
+
+st2 = valid_using_re(st)
+st1 = valid(st)
+print(",".join(st2))
+print(",".join(st1))
